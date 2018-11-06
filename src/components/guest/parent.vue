@@ -10,7 +10,7 @@
             <div class="article">
               <img :src="`/images/news/${article.image}_thumb.png`">
               <h3>{{ article.title }}</h3>
-              <p>{{ article.description }}</p>
+              <p>{{ article.caption }}</p>
             </div>
           </div>
         </div>
@@ -26,20 +26,33 @@
 </template>
 
 <script>
-import { API, Store } from '@/app'
+import { Store } from '@/app'
 export default {
   data () {
     return {
       online: Store.Settings.getters.usersOnline,
-      articles: null
-    }
-  },
-  async mounted () {
-    try {
-      let articles = await API.get('article/latest')
-      this.articles = articles.data
-    } catch (e) {
-      this.$router.push({ name: 'Errors.500' })
+      articles: [
+        {
+          image: 'lpromo_bundebazzaretahouseaugust2017',
+          title: 'Creativity Rocks',
+          caption: 'Build the rooms of your dreams without limits'
+        },
+        {
+          image: 'lpromo_2016doublecredits',
+          title: 'Become Rich',
+          caption: 'All the credits you could ever wish for'
+        },
+        {
+          image: 'lpromo_alice-1',
+          title: 'Get Weird',
+          caption: 'Reveal your true colors and just have fun!'
+        },
+        {
+          image: 'lpromo_4thdaystoryjuly2017',
+          title: 'Make Friends',
+          caption: 'Meet new people and conquer the world!'
+        }
+      ]
     }
   }
 }
