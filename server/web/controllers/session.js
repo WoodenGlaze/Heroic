@@ -1,5 +1,4 @@
 import Token from '@/lib/jwt'
-import Friends from '@/sql/models/friend'
 import Interactor from '@/sql/interactors/user'
 export default class Controller {
   static async read (request, reply) {
