@@ -10,8 +10,6 @@ export default class Routing {
     await Server.route('GET', 'session', 'Session@read', true) // Fetch user session
     await Server.route('POST', 'session', 'Session@create') // Login as user
     await Server.route('GET', 'session/client', 'Session@client', true) // Login to client
-    await Server.route('GET', 'session/timeline/:relations', 'Session@timeline', true) // Fetch timeline
-    await Server.route('GET', 'session/timeline/:relations/:page', 'Session@timeline', true) // Fetch timeline (with page)
     // User
     await Server.route('POST', 'user', 'User@create') // Create user
     await Server.route('PATCH', 'user', 'User@update') // Update user

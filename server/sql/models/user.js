@@ -35,9 +35,7 @@ export default class Model extends password(Base) {
       'friends',
       'info',
       'rooms',
-      'permission',
-      'posts',
-      'comments'
+      'permission'
     ]
   }
 
@@ -50,10 +48,6 @@ export default class Model extends password(Base) {
     const Info = require('./users_settings').default
     const Rooms = require('./room').default
     const Permission = require('./permission').default
-    const Timeline = {
-      Posts: require('./post').default,
-      Comments: require('./comment').default
-    }
     // Relations
     return {
       // Bans (bans)
@@ -117,24 +111,6 @@ export default class Model extends password(Base) {
         join: {
           from: 'users.id',
           to: 'rooms.owner_id'
-        }
-      },
-      // Posts (heroic_posts)
-      posts: {
-        relation: Base.HasManyRelation,
-        modelClass: Timeline.Posts,
-        join: {
-          from: 'users.id',
-          to: 'heroic_posts.user_id'
-        }
-      },
-      // Comments (heroic_comments)
-      comments: {
-        relation: Base.HasManyRelation,
-        modelClass: Timeline.Comments,
-        join: {
-          from: 'users.id',
-          to: 'heroic_comments.user_id'
         }
       }
     }
